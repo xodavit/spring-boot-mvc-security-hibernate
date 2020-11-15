@@ -1,7 +1,7 @@
 #HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!.mvn/wrapper/
+mvn/wrapper/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -112,6 +112,5 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 lint/reports/
-HELP.md
 target
 
