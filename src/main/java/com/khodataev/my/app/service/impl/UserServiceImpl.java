@@ -24,27 +24,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(User user) {
-        userRepo.addUser(user);
+        userRepo.save(user);
     }
 
     @Override
     public void deleteUser(Long id) {
-        userRepo.deleteUser(id);
+        userRepo.deleteById(id);
     }
 
     @Override
     public void editUser(User user) {
-        userRepo.editUser(user);
+        userRepo.saveAndFlush(user);
     }
 
     @Override
     public User getUserById(Long id) {
-        return userRepo.getUserById(id);
+        return userRepo.findById(id).get();
     }
 
     @Override
     public List<User> getAllUsers() {
-        return userRepo.getAllUsers();
+        return userRepo.findAll();
     }
 
     // «Пользователь» – это просто Object. В большинстве случаев он может быть

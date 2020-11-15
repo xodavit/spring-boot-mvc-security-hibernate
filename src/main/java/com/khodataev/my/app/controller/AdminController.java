@@ -50,6 +50,7 @@ public class AdminController {
                               @RequestParam(required=false) String roleAdmin,
                               @RequestParam(required=false) String roleVIP) {
         Set<Role> roles = new HashSet<>();
+        //roles.add(roleService.getRoleByName("ROLE_USER"));
         roles.add(roleService.getRoleByName("ROLE_USER"));
         if (roleAdmin != null && roleAdmin.equals("ROLE_ADMIN")) {
             roles.add(roleService.getRoleByName("ROLE_ADMIN"));
