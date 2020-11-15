@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить пользователя</title>
+</head>
+<body>
+<div>
+    <th:block th:include="menuPage">Menu</th:block>
+</div>
+<h2>Изменить пользователя</h2>
+<div>
+    <form th:action="@{/admin/edit}" th:object="${user}" method="post">
+        <input type="hidden" name="id" th:value="${user.getId()}">
+        <fieldset>
+            <legend>Данные пользователя</legend>
+            <p>
+                <label th:for="username">Логин
+                    <input type="text" name="username" th:id="username" th:value="${user.getUsername()}">
+                </label>
+                <br/>
+                <label th:for="password">Пароль
+                    <input type="text" name="password" th:id="password" th:value="${user.getPassword()}">
+                </label>
+                <br/>
+                <label th:for="email">Почтовый ящик
+                    <input type="text" name="email" th:id="email" th:value="${user.getEmail()}">
+                </label>
+                <br/>
+                <label th:for="name">Имя
+                    <input type="text" name="firstName" th:id="firstName" th:value="${user.getFirstName()}">
+                </label>
+                <br/>
+                <label th:for="lastName">Фамилия
+                    <input type="text" name="lastName" th:id="lastName" th:value="${user.getLastName()}">
+                </label>
+                <br/>
+                <label>
+                    <input type="checkbox"
+                           name="roleAdmin"
+                           th:checked="${roleAdmin}"
+                           th:value="ROLE_ADMIN"
+                           th:text="Администратор">
+                </label>
+                <label>
+                    <input type="checkbox"
+                           name="roleVIP"
+                           th:checked="${roleVIP}"
+                           th:value="ROLE_VIP"
+                           th:text="Вип">
+                </label>
+            </p>
+        </fieldset>
+        <button type="submit">Изменить данные</button>
+    </form>
+    <br/>
+    <form th:action="@{/admin/all}">
+        <button type="submit">Назад к списку пользователей</button>
+    </form>
+</div>
+</body>
+</html>

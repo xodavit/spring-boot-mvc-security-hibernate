@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все пользователи</title>
+</head>
+<body>
+<h2>Все пользователи</h2>
+<div>
+    <th:block th:include="menuPage">Menu</th:block>
+</div>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Login</th>
+            <th>Password</th>
+            <th>Почтовый ящик</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Роль</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.getId()}">Id</td>
+            <td th:text="${user.getUsername()}">Login</td>
+            <td th:text="${user.getPassword()}">Password</td>
+            <td th:text="${user.getEmail()}">Почтовый ящик</td>
+            <td th:text="${user.getFirstName()}">Имя</td>
+            <td th:text="${user.getLastName()}">Фамилия</td>
+            <td>
+                <div th:each="role: ${user.getRoles()}">
+                    <span th:if="(${role.getName()} == 'ROLE_ADMIN')" th:utext="Администратор"></span>
+                    <span th:if="(${role.getName()} == 'ROLE_VIP')" th:utext="Вип"></span>
+                </div>
+            </td>
+            <td>
+                <form th:action="@{edit/{id}(id=${user.getId()})}" th:object="${user}">
+                    <button type="submit">Изменить</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{delete/{id}(id=${user.getId()})}" th:object="${user}">
+                    <input type="hidden" name="id" th:value="${user.getId()}">
+                    <button type="submit">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <form th:action="@{add}">
+        <button type="submit">Добавить нового пользователя</button>
+    </form>
+</div>
+</body>
+</html>

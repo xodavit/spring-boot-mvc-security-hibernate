@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница пользователя</title>
+</head>
+<body>
+<div>
+    <th:block th:include="menuPage">Menu</th:block>
+</div>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Login</th>
+            <th>Password</th>
+            <th>Почтовый ящик</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${user.getId()}">Id</td>
+            <td th:text="${user.getUsername()}">Login</td>
+            <td th:text="${user.getPassword()}">Password</td>
+            <td th:text="${user.getEmail()}">Почтовый ящик</td>
+            <td th:text="${user.getFirstName()}">Имя</td>
+            <td th:text="${user.getLastName()}">Фамилия</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
